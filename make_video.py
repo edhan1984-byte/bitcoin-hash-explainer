@@ -1,4 +1,4 @@
-import hashlib, random, subprocess, sys, os
+﻿import hashlib, random, subprocess, sys, os
 from PIL import Image, ImageDraw, ImageFont
 
 W, H, FPS = 1280, 720, 30
@@ -106,7 +106,7 @@ def hash_io(d, y, text, h, t, t_type, t_hash, diff=None, a=1.0):
         T(d, 510, y - 8, "출력 (256비트 = 64자리 16진수)", KR(16), DIM, a)
 
 def s_hash(d, t):
-    T(d, 60, 40, "① 해시 함수: SHA-256", KRB(40), FG)
+    T(d, 60, 40, "해시 함수: SHA-256", KRB(40), FG)
     hash_io(d, 150, "Hello Bitcoin", H1, t, 0.6, 2.8)
     if t >= 6.5:
         a = fade(t, 6.5)
@@ -120,7 +120,7 @@ def s_hash(d, t):
           KR(22), DIM, a)
 
 def s_props(d, t):
-    T(d, 60, 40, "② 좋은 해시 함수의 3가지 성질", KRB(40), FG)
+    T(d, 60, 40, "좋은 해시 함수의 3가지 성질", KRB(40), FG)
     ex = [sha("Hello")[:12], sha("hello")[:12]]
     cards = [
         ("1", "결정적", "같은 입력이면\n언제나 같은 해시", [("Hello", ex[0], FG), ("Hello", ex[0], FG)]),
@@ -143,7 +143,7 @@ def s_props(d, t):
             T(d, x + 28 + 165, y, outp, MONO(24), col, a)
 
 def s_header(d, t):
-    T(d, 60, 40, "③ 비트코인의 블록 헤더 -> 블록 해시", KRB(40), FG)
+    T(d, 60, 40, "비트코인의 블록 헤더 -> 블록 해시", KRB(40), FG)
     rows = [("버전", "0x20000000"), ("이전 블록 해시", "00000000a3f19c…"),
             ("머클 루트 (거래 요약)", "7d3c91be…"), ("타임스탬프", "1762939800"),
             ("난이도 목표 (bits)", "0x1d00ffff"), ("논스 (nonce)", "")]
@@ -175,7 +175,7 @@ def s_header(d, t):
         T(d, 660, 596, "(실제로는 타임스탬프·머클 루트도 함께 조정)", KR(18), DIM, a)
 
 def s_mine(d, t):
-    T(d, 60, 40, "④ 채굴 = 조건에 맞는 해시 찾기", KRB(40), FG)
+    T(d, 60, 40, "채굴 = 조건에 맞는 해시 찾기", KRB(40), FG)
     found = t >= 11.0
     p = min(1.0, t / 11.0)
     idx = FOUND if found else int(FOUND * (p ** 2.0))
@@ -219,7 +219,7 @@ def s_mine(d, t):
           KR(20), DIM, a, "mm")
 
 def s_chain(d, t):
-    T(d, 60, 40, "⑤ 해시로 이어진 블록체인", KRB(40), FG)
+    T(d, 60, 40, "해시로 이어진 블록체인", KRB(40), FG)
     tam = t >= 5.0
     ta = fade(t, 5.0, 0.6)
     for i, (prv, dt, n, h) in enumerate(CH):
